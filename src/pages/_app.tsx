@@ -1,20 +1,14 @@
-import type { AppProps /*, AppContext */ } from "next/app";
-import { ThemeProvider } from "styled-components";
-import GlobalStyle from "styles/GlobalStyle";
+import type { AppProps } from 'next/app';
 
-const theme = {
-  colors: {
-    primary: "#0070f3",
-  },
-};
+import globalStyles from 'styles/global.styled';
+import normalizeStyles from 'styles/normalize.styled';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <Component {...pageProps} />
+      <style jsx>{normalizeStyles}</style>
+      <style jsx>{globalStyles}</style>
     </>
   );
 }
